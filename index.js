@@ -1,30 +1,25 @@
-const http = require("http");
-const fs = require("fs");
+const express = require("express");
+const path = require("path");
+
+const app = express();
 const host = "127.0.0.1";
 const port = 3000;
 
-const indexPage = fs.readFileSync("index.html");
-const aboutPage = fs.readFileSync("about.html");
-const contactPage = fs.readFileSync("contact.html");
-const notFoundPage = fs.readFileSync("404.html");
-const server = http.createServer((req, res) => {
-  switch (req.url) {
-    case "/":
-      res.end(indexPage);
-      break;
-    case "/about":
-      res.end(aboutPage);
-      break;
-    case "/contact":
-      res.end(contactPage);
-      break;
-    default: {
-      
-      res.statusCode = 404;
-      res.end(notFoundPage);
-    }
-  }
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "index.html"));
 });
-server.listen(port, host, () => {
+app.get("/contact", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "contact.html"));
+});
+app.get("/about", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "about.html"));
+});
+app.get("/users/:userId/movies/:movieId", (req, res) => {
+  res.send(
+    `<p>User ID: ${req.params.userId}</p><p>Movie ID: ${req.params.movieId}</p>`
+  );
+});
+
+app.listen(port, host, () => {
   console.log(`listening on: http://${host}:${port}`);
 });
