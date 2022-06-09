@@ -1,0 +1,23 @@
+{
+  "name": "basic-server-installation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omr-dev/basic-server-installation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omr-dev/basic-server-installation/issues"
+  },
+  "homepage": "https://github.com/omr-dev/basic-server-installation#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
