@@ -5,21 +5,22 @@ const app = express();
 const host = "127.0.0.1";
 const port = 3000;
 
-app.use((express.static('public')));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "index.html"));
+  res.sendFile(path.resolve(__dirname, "site/index.html"));
 });
 app.get("/contact", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "contact.html"));
+  res.sendFile(path.resolve(__dirname, "site/contact.html"));
 });
 app.get("/about", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "about.html"));
+  res.sendFile(path.resolve(__dirname, "site/about.html"));
 });
-app.get("/users/:userId/movies/:movieId", (req, res) => {
-  res.send(
-    `<p>User ID: ${req.params.userId}</p><p>Movie ID: ${req.params.movieId}</p>`
-  );
+app.get("/blog", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "site/blog.html"));
+});
+app.get("/blog-single", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "site/blog-single.html"));
 });
 
 app.listen(port, host, () => {
